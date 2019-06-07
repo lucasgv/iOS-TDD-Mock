@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		038136C120B4889E005FEDD7 /* LeilaoDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038136C020B4889D005FEDD7 /* LeilaoDao.swift */; };
+		038136C120B4889E005FEDD7 /* LeilaoDaoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038136C020B4889D005FEDD7 /* LeilaoDaoProtocol.swift */; };
 		038136C520B4896B005FEDD7 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 038136C420B4896B005FEDD7 /* libsqlite3.tbd */; };
 		038136C720B48AD8005FEDD7 /* FormatadorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038136C620B48AD8005FEDD7 /* FormatadorData.swift */; };
 		038136CB20B48B5F005FEDD7 /* EncerradorDeLeilao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038136CA20B48B5F005FEDD7 /* EncerradorDeLeilao.swift */; };
@@ -23,6 +23,9 @@
 		03FA4B27209353CB0047D61B /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA4B26209353CB0047D61B /* Usuario.swift */; };
 		03FA4B29209354F50047D61B /* Leilao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA4B28209354F50047D61B /* Leilao.swift */; };
 		3962CB2194A1E4C00DA717F4 /* Pods_LeilaoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F145FB2F65C8FA496BC97986 /* Pods_LeilaoUITests.framework */; };
+		597C1A8422A9DB0600CB39F2 /* LeilaoDaoMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597C1A8322A9DB0600CB39F2 /* LeilaoDaoMock.swift */; };
+		597C1A8622A9E81800CB39F2 /* LeilaoDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597C1A8522A9E81800CB39F2 /* LeilaoDao.swift */; };
+		599700AD22A9D094001038D1 /* EncerradorDeLeilaoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599700AC22A9D094001038D1 /* EncerradorDeLeilaoTests.swift */; };
 		87030A9AE0C6ED1866EAE846 /* Pods_LeilaoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38DF57ED8C7EFC799D1BD99 /* Pods_LeilaoTests.framework */; };
 		A23F5A0F209CA483000E6525 /* Avaliador.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F5A0E209CA483000E6525 /* Avaliador.swift */; };
 		A23F5A11209CD8FA000E6525 /* AvaliadorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F5A10209CD8FA000E6525 /* AvaliadorTests.swift */; };
@@ -49,7 +52,7 @@
 
 /* Begin PBXFileReference section */
 		032438B2846DA6607A6F44D3 /* Pods-LeilaoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeilaoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeilaoTests/Pods-LeilaoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		038136C020B4889D005FEDD7 /* LeilaoDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeilaoDao.swift; sourceTree = "<group>"; };
+		038136C020B4889D005FEDD7 /* LeilaoDaoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeilaoDaoProtocol.swift; sourceTree = "<group>"; };
 		038136C320B48901005FEDD7 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		038136C420B4896B005FEDD7 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		038136C620B48AD8005FEDD7 /* FormatadorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatadorData.swift; sourceTree = "<group>"; };
@@ -72,6 +75,9 @@
 		03FA4B26209353CB0047D61B /* Usuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
 		03FA4B28209354F50047D61B /* Leilao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leilao.swift; sourceTree = "<group>"; };
 		0CF7CCCF5DC3FEF7719DA049 /* Pods-LeilaoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeilaoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeilaoUITests/Pods-LeilaoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		597C1A8322A9DB0600CB39F2 /* LeilaoDaoMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeilaoDaoMock.swift; sourceTree = "<group>"; };
+		597C1A8522A9E81800CB39F2 /* LeilaoDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeilaoDao.swift; sourceTree = "<group>"; };
+		599700AC22A9D094001038D1 /* EncerradorDeLeilaoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncerradorDeLeilaoTests.swift; sourceTree = "<group>"; };
 		7A02B7555041DD36E6C17E51 /* Pods-Leilao.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leilao.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Leilao/Pods-Leilao.debug.xcconfig"; sourceTree = "<group>"; };
 		96B13E362E12E632B3A49E78 /* Pods-Leilao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leilao.release.xcconfig"; path = "Pods/Target Support Files/Pods-Leilao/Pods-Leilao.release.xcconfig"; sourceTree = "<group>"; };
 		A23F5A0E209CA483000E6525 /* Avaliador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avaliador.swift; sourceTree = "<group>"; };
@@ -116,7 +122,9 @@
 		038136BE20B4885D005FEDD7 /* Dao */ = {
 			isa = PBXGroup;
 			children = (
-				038136C020B4889D005FEDD7 /* LeilaoDao.swift */,
+				038136C020B4889D005FEDD7 /* LeilaoDaoProtocol.swift */,
+				597C1A8322A9DB0600CB39F2 /* LeilaoDaoMock.swift */,
+				597C1A8522A9E81800CB39F2 /* LeilaoDao.swift */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -175,6 +183,7 @@
 				03FA4B08209353290047D61B /* LeilaoTests.swift */,
 				A23F5A10209CD8FA000E6525 /* AvaliadorTests.swift */,
 				03FA4B0A209353290047D61B /* Info.plist */,
+				599700AC22A9D094001038D1 /* EncerradorDeLeilaoTests.swift */,
 			);
 			path = LeilaoTests;
 			sourceTree = "<group>";
@@ -425,7 +434,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				03FA4AF3209353270047D61B /* ViewController.swift in Sources */,
-				038136C120B4889E005FEDD7 /* LeilaoDao.swift in Sources */,
+				038136C120B4889E005FEDD7 /* LeilaoDaoProtocol.swift in Sources */,
+				597C1A8422A9DB0600CB39F2 /* LeilaoDaoMock.swift in Sources */,
+				597C1A8622A9E81800CB39F2 /* LeilaoDao.swift in Sources */,
 				03FA4B25209353AF0047D61B /* Lance.swift in Sources */,
 				038136CB20B48B5F005FEDD7 /* EncerradorDeLeilao.swift in Sources */,
 				03FA4AF1209353270047D61B /* AppDelegate.swift in Sources */,
@@ -442,6 +453,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				599700AD22A9D094001038D1 /* EncerradorDeLeilaoTests.swift in Sources */,
 				03FA4B09209353290047D61B /* LeilaoTests.swift in Sources */,
 				A23F5A11209CD8FA000E6525 /* AvaliadorTests.swift in Sources */,
 			);
@@ -610,7 +622,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LF4G5DZZMF;
+				DEVELOPMENT_TEAM = NM4QTJN8VU;
 				INFOPLIST_FILE = Leilao/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -630,7 +642,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LF4G5DZZMF;
+				DEVELOPMENT_TEAM = NM4QTJN8VU;
 				INFOPLIST_FILE = Leilao/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -651,7 +663,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LF4G5DZZMF;
+				DEVELOPMENT_TEAM = NM4QTJN8VU;
 				INFOPLIST_FILE = LeilaoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -673,7 +685,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LF4G5DZZMF;
+				DEVELOPMENT_TEAM = NM4QTJN8VU;
 				INFOPLIST_FILE = LeilaoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -694,7 +706,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LF4G5DZZMF;
+				DEVELOPMENT_TEAM = NM4QTJN8VU;
 				INFOPLIST_FILE = LeilaoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -715,7 +727,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LF4G5DZZMF;
+				DEVELOPMENT_TEAM = NM4QTJN8VU;
 				INFOPLIST_FILE = LeilaoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
