@@ -16,5 +16,5 @@ import UIKit
     
     func encerrados() -> [Leilao]
     
-    func atualiza(_ leilao:Leilao)
+    func atualiza(_ leilao:Leilao) throws
 }

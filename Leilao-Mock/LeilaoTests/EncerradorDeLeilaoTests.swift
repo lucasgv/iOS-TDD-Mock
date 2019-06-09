@@ -8,20 +8,30 @@
 
 import XCTest
 @testable import Leilao
+import Cuckoo
 
 class EncerradorDeLeilaoATests: XCTestCase {
 
+    var formatter: DateFormatter!
+    var encerradorDeLeilao: EncerradorDeLeilao!
+    var daoFalso: MockLeilaoDao!
+    var carteiroFalso: MockCarteiro!
+
     override func setUp() {
         super.setUp()
+        formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        daoFalso = MockLeilaoDao().withEnabledSuperclassSpy()
+        carteiroFalso = MockCarteiro().withEnabledSuperclassSpy()
+        encerradorDeLeilao = EncerradorDeLeilao(daoFalso, carteiroFalso)
     }
 
     override func tearDown() {
         super.tearDown()
     }
 
+    // Usando mock criado manualmente sem framework, mantendo apenas para histórico
     func testDeveEncerrarLeiloesQueComecaramUmaSemanaAntes() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
 
         guard let oldDate = formatter.date(from: "2019/05/09") else { return }
 
@@ -32,8 +42,8 @@ class EncerradorDeLeilaoATests: XCTestCase {
         dao.salva(tvLed)
         dao.salva(geladeira)
 
-        let encerradorDeLeilao = EncerradorDeLeilao(dao)
-        encerradorDeLeilao.encerra()
+        let encerradorDeLeilaoMockManual = EncerradorDeLeilao(dao, Carteiro())
+        encerradorDeLeilaoMockManual.encerra()
 
         let leiloesEncerrados = dao.encerrados()
 
@@ -43,4 +53,68 @@ class EncerradorDeLeilaoATests: XCTestCase {
         XCTAssertTrue(leiloesEncerrados[1].isEncerrado()!)
     }
 
+    //Usando framework Cuckoo para criar os mocks e ensinando ele a criar
+    func testDeveEncerrarLeiloesQueComecaramUmaSemanaAntesUsandoCuckoo() {
+
+        guard let oldDate = formatter.date(from: "2019/05/09") else { return }
+
+        let tvLed = CriadorDeLeilao().para(descricao: "TV LED").naData(data: oldDate).constroi()
+        let geladeira = CriadorDeLeilao().para(descricao: "Geladeira").naData(data: oldDate).constroi()
+
+        stub(daoFalso) { (daoFalso) in
+            when(daoFalso.correntes()).thenReturn([tvLed,geladeira])
+        }
+
+        encerradorDeLeilao.encerra()
+
+        XCTAssertEqual(2, encerradorDeLeilao.getTotalEncerrados())
+
+        guard let statusTVLed = tvLed.isEncerrado() else { return }
+        guard let statusGeladeira = geladeira.isEncerrado() else { return }
+        XCTAssertTrue(statusTVLed)
+        XCTAssertTrue(statusGeladeira)
+    }
+
+    // Verificar pelo Cuckoo se o método atualiza foi invocado
+    func testDeveAtualizarLeiloesAtualizados() {
+        guard let oldDate = formatter.date(from: "2019/05/19") else { return }
+        let tvLed = CriadorDeLeilao().para(descricao: "TV LED").naData(data: oldDate).constroi()
+        stub(daoFalso) { (daoFalso) in
+            when(daoFalso.correntes()).thenReturn([tvLed])
+        }
+
+        let encerradorDeLeilao = EncerradorDeLeilao(daoFalso, Carteiro())
+        encerradorDeLeilao.encerra()
+
+        verify(daoFalso).atualiza(tvLed)
+    }
+
+    func testDeveContinuarExecucaoMesmoQuandoDaoFalhar() {
+        guard let oldDate = formatter.date(from: "2019/05/19") else { return }
+
+        let tvLed = CriadorDeLeilao().para(descricao: "Tv LEd").naData(data: oldDate).constroi()
+        let geladeira = CriadorDeLeilao().para(descricao: "Geladeira").naData(data: oldDate).constroi()
+
+        let error = NSError(domain: "Error", code: 0, userInfo: nil)
+
+        stub(daoFalso) { (daoFalso) in
+            when(daoFalso.correntes()).thenReturn([tvLed, geladeira])
+            when(daoFalso.atualiza(tvLed)).thenThrow(error)
+        }
+
+        encerradorDeLeilao.encerra()
+
+        verify(daoFalso).atualiza(geladeira)
+        verify(carteiroFalso).envia(geladeira)
+
+        //Para verificar que o erro forçado está realmente funcionando
+        //verify(carteiroFalso).envia(tvLed)
+    }
+
+}
+
+extension Leilao: Matchable {
+    public var matcher: ParameterMatcher<Leilao> {
+        return equal(to: self)
+    }
 }

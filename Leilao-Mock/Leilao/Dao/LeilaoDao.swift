@@ -9,6 +9,10 @@
 import UIKit
 import SQLite3
 
+enum ErrorLeilaoDao: Error {
+    case NaoAtualizou(String)
+}
+
 class LeilaoDao: LeilaoDaoProtocol {
 
     private var dataBase : OpaquePointer? = nil
@@ -91,7 +95,7 @@ class LeilaoDao: LeilaoDaoProtocol {
         return listaDeLeilao
     }
 
-    func atualiza(_ leilao: Leilao) {
+    func atualiza(_ leilao: Leilao) throws {
         guard let idDoLeilao = leilao.id else { return }
 
         guard let status = leilao.encerrado else { return }
@@ -102,6 +106,9 @@ class LeilaoDao: LeilaoDaoProtocol {
 
         let sql = "update LEILAO set descricao = '\(leilao.descricao)', encerrado = '\(statusDoLeilao)', data = '\(dataDoLeilao)' where id = '\(idDoLeilao)'"
 
+        if !(sqlite3_exec(dataBase, sql, nil, nil, nil) == SQLITE_OK) {
+            throw ErrorLeilaoDao.NaoAtualizou("Erro ao atualizar o leilao")
+        }
         executaQuery(sql)
     }
 }
